@@ -1,0 +1,21 @@
+{
+  "name": "sauce-demo-december",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "cypress": "^9.2.0",
+    "cypress-mochawesome-reporter": "^2.3.0"
+  },
+  "dependencies": {
+    "pretty-ms": "^7.0.1",
+    "yargs": "^17.3.1"
+  }
+}

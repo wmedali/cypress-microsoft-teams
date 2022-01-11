@@ -1,0 +1,57 @@
+{
+  "success": {
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Tests Correctly Executed",
+    "themeColor": "COLOR_FROM_SCRIPT",
+    "title": "🧰 Mr Pops Notification 🧰",
+    "sections": [
+      {
+        "activityTitle": "GITHUB_ACTOR",
+        "activitySubtitle": "Run duration : ",
+        "activityImage": "https://raw.githubusearcontent.com/cypress-io/cypress-icons/master/src/logo/cypress-io-logo-round.png",
+        "facts": [
+          {
+            "name": "Total Tests :",
+            "value": "0000"
+          },
+          {
+            "name": "Branch :",
+            "value": "GITHUB_BRANCH"
+          },
+          {
+            "name": "Commit :",
+            "value": "GITHUB_COMMIT"
+          }
+        ],
+        "text": "Execution Summary",
+        "markdown": true
+      }
+    ],
+    "potentialAction": [
+      {
+        "@type": "OpenUri",
+        "name": "View Tests Report",
+        "targets": [
+          {
+            "os": "default",
+            "uri": "URL TO BUILD"
+          }
+        ]
+      }
+    ]
+  },
+  "failure": {
+    "@type": "MessageCard",
+    "@context": "https://schema.org/extensions",
+    "summary": "Tests Execution is Failing",
+    "themeColor": "FF0033",
+    "title": "🧰 Mr Box Notification 🧰",
+    "sections": [
+      {
+        "text": "An **error** occured when executing tests",
+        "markdown": true
+      }
+    ]
+  }
+}

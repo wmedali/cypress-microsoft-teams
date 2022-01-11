@@ -1,0 +1,444 @@
+{
+  "startedTestsAt": "2022-01-09T01:24:47.524Z",
+  "endedTestsAt": "2022-01-09T01:24:57.417Z",
+  "totalDuration": 6764,
+  "totalSuites": 2,
+  "totalTests": 3,
+  "totalFailed": 0,
+  "totalPassed": 3,
+  "totalPending": 0,
+  "totalSkipped": 0,
+  "runs": [
+    {
+      "stats": {
+        "suites": 1,
+        "tests": 2,
+        "passes": 2,
+        "pending": 0,
+        "skipped": 0,
+        "failures": 0,
+        "duration": 1021,
+        "startedAt": "2022-01-09T01:24:47.524Z",
+        "endedAt": "2022-01-09T01:24:48.545Z"
+      },
+      "reporter": "cypress-mochawesome-reporter",
+      "reporterStats": {
+        "suites": 1,
+        "tests": 2,
+        "passes": 2,
+        "pending": 0,
+        "failures": 0,
+        "start": "2022-01-09T01:24:47.551Z",
+        "end": "2022-01-09T01:24:48.553Z",
+        "duration": 1002,
+        "testsRegistered": 2,
+        "passPercent": 100,
+        "pendingPercent": 0,
+        "other": 0,
+        "hasOther": false,
+        "skipped": 0,
+        "hasSkipped": false
+      },
+      "hooks": [],
+      "tests": [
+        {
+          "title": ["API Tests", "GET - OMDB API Request"],
+          "state": "passed",
+          "body": "function () {\n    cy.request(\"http://www.omdbapi.com/?apikey=e3fa960a&type=movie&s=vandetta\").then(response => {\n      cy.log(response);\n      expect(response.status).eq(200);\n      let body = response.body;\n      expect(body.Search).to.not.null;\n      expect(body.Search[0].Year).eq(\"2017\");\n      expect(body.Search[0].Title).eq(\"ONZ: Vandetta feat. Kim Olsen\");\n      expect(body.Search[0].imdbID).eq(\"tt7559162\");\n    });\n  }",
+          "displayError": null,
+          "attempts": [
+            {
+              "state": "passed",
+              "error": null,
+              "videoTimestamp": null,
+              "duration": 236,
+              "startedAt": "2022-01-09T01:24:47.538Z",
+              "screenshots": []
+            }
+          ]
+        },
+        {
+          "title": ["API Tests", "POST - JsonPlaceHolder API"],
+          "state": "passed",
+          "body": "() => {\n    let firstName = \"EL MALHOUF\";\n    cy.request({\n      url: \"https://jsonplaceholder.typicode.com/posts\",\n      method: \"POST\",\n      body: {\n        name: name,\n        firstName: firstName\n      }\n    }).then(response => {\n      let body = response.body;\n      expect(body.firstName).to.eq(firstName);\n    });\n  }",
+          "displayError": null,
+          "attempts": [
+            {
+              "state": "passed",
+              "error": null,
+              "videoTimestamp": null,
+              "duration": 750,
+              "startedAt": "2022-01-09T01:24:47.781Z",
+              "screenshots": []
+            }
+          ]
+        }
+      ],
+      "error": null,
+      "video": null,
+      "spec": {
+        "name": "hooks.spec.js",
+        "relative": "cypress/integration/hooks.spec.js",
+        "absolute": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/integration/hooks.spec.js",
+        "specType": "integration"
+      },
+      "shouldUploadVideo": true
+    },
+    {
+      "stats": {
+        "suites": 1,
+        "tests": 1,
+        "passes": 1,
+        "pending": 0,
+        "skipped": 0,
+        "failures": 0,
+        "duration": 5743,
+        "startedAt": "2022-01-09T01:24:51.674Z",
+        "endedAt": "2022-01-09T01:24:57.417Z"
+      },
+      "reporter": "cypress-mochawesome-reporter",
+      "reporterStats": {
+        "suites": 1,
+        "tests": 1,
+        "passes": 1,
+        "pending": 0,
+        "failures": 0,
+        "start": "2022-01-09T01:24:51.679Z",
+        "end": "2022-01-09T01:24:57.488Z",
+        "duration": 5809,
+        "testsRegistered": 1,
+        "passPercent": 100,
+        "pendingPercent": 0,
+        "other": 0,
+        "hasOther": false,
+        "skipped": 0,
+        "hasSkipped": false
+      },
+      "hooks": [
+        {
+          "hookName": "before each",
+          "title": ["\"before each\" hook"],
+          "body": "function () {\n    cy.visit(\"https://www.saucedemo.com/\");\n  }"
+        }
+      ],
+      "tests": [
+        {
+          "title": [
+            "Sauce Demo Authentication tests",
+            "SC-1 : Authentication with valid username/password"
+          ],
+          "state": "passed",
+          "body": "function () {\n    cy.get(\"[data-test='username']\").type(\"standard_user\");\n    cy.get(\"[data-test='password']\").type(\"secret_sauce\");\n    cy.get(\"[data-test='login-button']\").click();\n    cy.get(\"#inventory_container\").should(\"be.visible\"); // Equivalent à : cy.get(\"[id=inventory_container]\").should(\"be.visible\");\n\n    cy.get(\".shopping_cart_link\").should(\"be.visible\"); // Equivalent à : cy.get(\"[class=shopping_cart_link]\").should(\"be.visible\");\n\n    cy.get(\"#item_3_title_link\").then($elem => {\n      cy.log($elem.text());\n    });\n    /*       .then((images) => {\n        for (let index = 0; index < images.length; index++) {\n          expect(images[index]).to.have.attr(\"src\");\n          expect(images[index]).to.have.attr(\"alt\");\n        }\n      }); */\n  }",
+          "displayError": null,
+          "attempts": [
+            {
+              "state": "passed",
+              "error": null,
+              "videoTimestamp": null,
+              "duration": 3535,
+              "startedAt": "2022-01-09T01:24:53.878Z",
+              "screenshots": []
+            }
+          ]
+        }
+      ],
+      "error": null,
+      "video": null,
+      "spec": {
+        "name": "saucedemo.spec.js",
+        "relative": "cypress/integration/saucedemo.spec.js",
+        "absolute": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/integration/saucedemo.spec.js",
+        "specType": "integration"
+      },
+      "shouldUploadVideo": true
+    }
+  ],
+  "browserPath": "",
+  "browserName": "electron",
+  "browserVersion": "94.0.4606.81",
+  "osName": "darwin",
+  "osVersion": "21.1.0",
+  "cypressVersion": "9.2.0",
+  "config": {
+    "chromeWebSecurity": false,
+    "video": false,
+    "reporter": "cypress-mochawesome-reporter",
+    "reporterOptions": { "reportDir": "tmp/reports" },
+    "projectRoot": "/Users/alee/Desktop/repos/sauce-demo-janvier",
+    "projectName": "sauce-demo-janvier",
+    "rawJson": {
+      "chromeWebSecurity": false,
+      "video": false,
+      "reporter": "cypress-mochawesome-reporter",
+      "reporterOptions": { "reportDir": "tmp/reports" },
+      "envFile": {},
+      "projectRoot": "/Users/alee/Desktop/repos/sauce-demo-janvier",
+      "projectName": "sauce-demo-janvier"
+    },
+    "configFile": "cypress.json",
+    "morgan": false,
+    "isTextTerminal": true,
+    "socketId": "zmy1p",
+    "report": true,
+    "browsers": [
+      {
+        "name": "chrome",
+        "family": "chromium",
+        "channel": "stable",
+        "displayName": "Chrome",
+        "version": "97.0.4692.71",
+        "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "minSupportedVersion": 64,
+        "majorVersion": 97
+      },
+      {
+        "name": "firefox",
+        "family": "firefox",
+        "channel": "stable",
+        "displayName": "Firefox",
+        "version": "94.0.2",
+        "path": "/Applications/Firefox.app/Contents/MacOS/firefox-bin",
+        "minSupportedVersion": 86,
+        "majorVersion": 94,
+        "warning": "Your project has set the configuration option: `chromeWebSecurity: false`\n\nThis option will not have an effect in Firefox. Tests that rely on web security being disabled will not run as expected."
+      },
+      {
+        "name": "electron",
+        "channel": "stable",
+        "family": "chromium",
+        "displayName": "Electron",
+        "version": "94.0.4606.81",
+        "path": "",
+        "majorVersion": 94,
+        "info": "Electron is the default browser that comes with Cypress. This is the default browser that runs in headless mode. Selecting this browser is useful when debugging. The version number indicates the underlying Chromium version that Electron uses."
+      }
+    ],
+    "animationDistanceThreshold": 5,
+    "baseUrl": null,
+    "blockHosts": null,
+    "clientCertificates": [],
+    "component": {},
+    "componentFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/component",
+    "defaultCommandTimeout": 4000,
+    "downloadsFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/downloads",
+    "e2e": {},
+    "env": {},
+    "execTimeout": 60000,
+    "exit": true,
+    "experimentalFetchPolyfill": false,
+    "experimentalInteractiveRunEvents": false,
+    "experimentalSessionSupport": false,
+    "experimentalSourceRewriting": false,
+    "experimentalStudio": false,
+    "fileServerFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier",
+    "fixturesFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/fixtures",
+    "ignoreTestFiles": "*.hot-update.js",
+    "includeShadowDom": false,
+    "integrationFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/integration",
+    "keystrokeDelay": 0,
+    "modifyObstructiveCode": true,
+    "numTestsKeptInMemory": 0,
+    "pageLoadTimeout": 60000,
+    "pluginsFile": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/plugins/index.js",
+    "port": 50662,
+    "projectId": null,
+    "redirectionLimit": 20,
+    "requestTimeout": 5000,
+    "resolvedNodePath": "/Users/alee/.nvm/versions/node/v16.13.0/bin/node",
+    "resolvedNodeVersion": "16.13.0",
+    "responseTimeout": 30000,
+    "retries": { "runMode": 0, "openMode": 0 },
+    "screenshotOnRunFailure": true,
+    "screenshotsFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/screenshots",
+    "slowTestThreshold": 10000,
+    "scrollBehavior": "top",
+    "supportFile": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/support/index.js",
+    "supportFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/support",
+    "taskTimeout": 60000,
+    "testFiles": "**/*.*",
+    "trashAssetsBeforeRuns": true,
+    "userAgent": null,
+    "videoCompression": 32,
+    "videosFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress/videos",
+    "videoUploadOnPasses": true,
+    "viewportHeight": 660,
+    "viewportWidth": 1000,
+    "waitForAnimations": true,
+    "watchForFileChanges": false,
+    "autoOpen": false,
+    "clientRoute": "/__/",
+    "devServerPublicPathRoute": "/__cypress/src",
+    "hosts": null,
+    "isInteractive": true,
+    "namespace": "__cypress",
+    "reporterRoute": "/__cypress/reporter",
+    "socketIoCookie": "__socket.io",
+    "socketIoRoute": "/__socket.io",
+    "xhrRoute": "/xhrs/",
+    "cypressEnv": "production",
+    "resolved": {
+      "animationDistanceThreshold": { "value": 5, "from": "default" },
+      "baseUrl": { "value": null, "from": "default" },
+      "blockHosts": { "value": null, "from": "default" },
+      "chromeWebSecurity": { "value": false, "from": "config" },
+      "clientCertificates": { "value": [], "from": "default" },
+      "component": { "value": {}, "from": "default" },
+      "componentFolder": { "value": "cypress/component", "from": "default" },
+      "defaultCommandTimeout": { "value": 4000, "from": "default" },
+      "downloadsFolder": { "value": "cypress/downloads", "from": "default" },
+      "e2e": { "value": {}, "from": "default" },
+      "env": {},
+      "execTimeout": { "value": 60000, "from": "default" },
+      "exit": { "value": true, "from": "default" },
+      "experimentalFetchPolyfill": { "value": false, "from": "default" },
+      "experimentalInteractiveRunEvents": { "value": false, "from": "default" },
+      "experimentalSessionSupport": { "value": false, "from": "default" },
+      "experimentalSourceRewriting": { "value": false, "from": "default" },
+      "experimentalStudio": { "value": false, "from": "default" },
+      "fileServerFolder": { "value": "", "from": "default" },
+      "fixturesFolder": { "value": "cypress/fixtures", "from": "default" },
+      "ignoreTestFiles": { "value": "*.hot-update.js", "from": "default" },
+      "includeShadowDom": { "value": false, "from": "default" },
+      "integrationFolder": {
+        "value": "cypress/integration",
+        "from": "default"
+      },
+      "keystrokeDelay": { "value": 0, "from": "default" },
+      "modifyObstructiveCode": { "value": true, "from": "default" },
+      "numTestsKeptInMemory": { "value": 0, "from": "config" },
+      "pageLoadTimeout": { "value": 60000, "from": "default" },
+      "pluginsFile": { "value": "cypress/plugins", "from": "default" },
+      "port": { "value": null, "from": "default" },
+      "projectId": { "value": null, "from": "default" },
+      "redirectionLimit": { "value": 20, "from": "default" },
+      "reporter": { "value": "cypress-mochawesome-reporter", "from": "config" },
+      "reporterOptions": {
+        "value": { "reportDir": "tmp/reports" },
+        "from": "config"
+      },
+      "requestTimeout": { "value": 5000, "from": "default" },
+      "resolvedNodePath": { "value": null, "from": "default" },
+      "resolvedNodeVersion": { "value": null, "from": "default" },
+      "responseTimeout": { "value": 30000, "from": "default" },
+      "retries": {
+        "value": { "runMode": 0, "openMode": 0 },
+        "from": "default"
+      },
+      "screenshotOnRunFailure": { "value": true, "from": "default" },
+      "screenshotsFolder": {
+        "value": "cypress/screenshots",
+        "from": "default"
+      },
+      "slowTestThreshold": { "value": 10000, "from": "default" },
+      "scrollBehavior": { "value": "top", "from": "default" },
+      "supportFile": { "value": "cypress/support", "from": "default" },
+      "supportFolder": { "value": false, "from": "default" },
+      "taskTimeout": { "value": 60000, "from": "default" },
+      "testFiles": { "value": "**/*.*", "from": "default" },
+      "trashAssetsBeforeRuns": { "value": true, "from": "default" },
+      "userAgent": { "value": null, "from": "default" },
+      "video": { "value": false, "from": "config" },
+      "videoCompression": { "value": 32, "from": "default" },
+      "videosFolder": { "value": "cypress/videos", "from": "default" },
+      "videoUploadOnPasses": { "value": true, "from": "default" },
+      "viewportHeight": { "value": 660, "from": "default" },
+      "viewportWidth": { "value": 1000, "from": "default" },
+      "waitForAnimations": { "value": true, "from": "default" },
+      "watchForFileChanges": { "value": false, "from": "config" },
+      "browsers": {
+        "value": [
+          {
+            "name": "chrome",
+            "family": "chromium",
+            "channel": "stable",
+            "displayName": "Chrome",
+            "version": "97.0.4692.71",
+            "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            "minSupportedVersion": 64,
+            "majorVersion": 97
+          },
+          {
+            "name": "firefox",
+            "family": "firefox",
+            "channel": "stable",
+            "displayName": "Firefox",
+            "version": "94.0.2",
+            "path": "/Applications/Firefox.app/Contents/MacOS/firefox-bin",
+            "minSupportedVersion": 86,
+            "majorVersion": 94
+          },
+          {
+            "name": "electron",
+            "channel": "stable",
+            "family": "chromium",
+            "displayName": "Electron",
+            "version": "94.0.4606.81",
+            "path": "",
+            "majorVersion": 94,
+            "info": "Electron is the default browser that comes with Cypress. This is the default browser that runs in headless mode. Selecting this browser is useful when debugging. The version number indicates the underlying Chromium version that Electron uses.",
+            "isHeadless": true,
+            "isHeaded": false
+          }
+        ],
+        "from": "default"
+      },
+      "hosts": { "value": null, "from": "default" },
+      "isInteractive": { "value": true, "from": "default" }
+    },
+    "parentTestsFolder": "/Users/alee/Desktop/repos/sauce-demo-janvier/cypress",
+    "parentTestsFolderDisplay": "sauce-demo-janvier/cypress",
+    "scaffoldedFiles": [
+      {
+        "name": "cypress",
+        "children": [
+          {
+            "name": "integration",
+            "children": [
+              {
+                "name": "1-getting-started",
+                "children": [{ "name": "todo.spec.js" }]
+              },
+              {
+                "name": "2-advanced-examples",
+                "children": [
+                  { "name": "actions.spec.js" },
+                  { "name": "aliasing.spec.js" },
+                  { "name": "assertions.spec.js" },
+                  { "name": "connectors.spec.js" },
+                  { "name": "cookies.spec.js" },
+                  { "name": "cypress_api.spec.js" },
+                  { "name": "files.spec.js" },
+                  { "name": "local_storage.spec.js" },
+                  { "name": "location.spec.js" },
+                  { "name": "misc.spec.js" },
+                  { "name": "navigation.spec.js" },
+                  { "name": "network_requests.spec.js" },
+                  { "name": "querying.spec.js" },
+                  { "name": "spies_stubs_clocks.spec.js" },
+                  { "name": "traversal.spec.js" },
+                  { "name": "utilities.spec.js" },
+                  { "name": "viewport.spec.js" },
+                  { "name": "waiting.spec.js" },
+                  { "name": "window.spec.js" }
+                ]
+              }
+            ]
+          },
+          { "name": "fixtures", "children": [{ "name": "example.json" }] },
+          {
+            "name": "support",
+            "children": [{ "name": "commands.js" }, { "name": "index.js" }]
+          },
+          { "name": "plugins", "children": [{ "name": "index.js" }] }
+        ]
+      }
+    ],
+    "proxyUrl": "http://localhost:50662",
+    "browserUrl": "http://localhost:50662/__/",
+    "reporterUrl": "http://localhost:50662/__cypress/reporter",
+    "xhrUrl": "__cypress/xhrs/",
+    "proxyServer": "http://localhost:50662",
+    "state": {}
+  },
+  "status": "finished"
+}
