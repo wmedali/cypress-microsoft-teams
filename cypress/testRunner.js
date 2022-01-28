@@ -8,7 +8,11 @@ const prettyMs = require("pretty-ms");
 
 let jobExitCode = 0;
 const WEBHOOK_URL =
-  "https://ingeniuslab018.webhook.office.com/webhookb2/b0b6c26d-d13d-4323-9dba-5df2de09c3fa@4179941a-152a-424a-a88d-0ffdddce19e2/IncomingWebhook/5fbfa65d49e3494b98fccfc741c38022/cec0a88a-457b-409f-a9a5-497e80a8d7c7";
+  "https://ingeniuslab018.webhook.office.com/webhookb2/b0b6c26d-d13d-4323-9dba-5df2de09c3fa@4179941a-152a-424a-a88d-0ffdddce19e2/IncomingWebhook/a365986cc21b452e996240aea0693734/cec0a88a-457b-409f-a9a5-497e80a8d7c7";
+
+let GITHUB_REPO =
+  "https://github.com/wmedali/cypress-microsoft-teams/actions/runs";
+
 class TestRunContext {
   constructor(results) {
     this.duration = results.totalDuration;
@@ -62,7 +66,7 @@ class TestRunContext {
       this.payload.sections[0].facts[2].value = argv.commit;
 
       // View Test Reports Button
-      this.payload.potentialAction[0].targets[0].uri = `https://github.com/wmedali/sauce-demo-cypress-janvier/actions/runs/${argv.id}`;
+      this.payload.potentialAction[0].targets[0].uri = `${GITHUB_REPO}/${argv.id}`;
 
       // Summary text
       this.payload.sections[0].text = `Status :**${status}** - **${this.totalFailed}** Failed - **${this.totalPassed}** Passed`;
@@ -104,10 +108,12 @@ cypress
     const payload = resultsContext.notificationPayload;
     return sendMessage(payload);
   })
-  .then(() => {
+  .then((status) => {
+    console.log("Microsoft Teams POST request response code :" + status);
     process.exit(jobExitCode);
   })
-  .catch(() => {
+  .catch((error) => {
+    console.error(error);
     jobExitCode = 3;
     process.exit(jobExitCode);
   });
